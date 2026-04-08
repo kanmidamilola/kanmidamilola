@@ -1,810 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Damilola Oyekanmi — Operations & IT Project Manager</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Damilola Oyekanmi Portfolio</title>
   <style>
-    :root {
-      --ink:       #0f0e0d;
-      --paper:     #f5f2ec;
-      --warm:      #c8b49a;
-      --accent:    #2d5a4b;
-      --accent2:   #8b3a2f;
-      --mid:       #6b6560;
-      --line:      rgba(15,14,13,0.12);
+    /* General */
+    body{
+      font-family: Arial, sans-serif;
+      margin:0;
+      padding:0;
+      line-height:1.6;
+      color:#222;
+      background:#fff;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
+    /* Hero Section */
+    .hero{
+      text-align:center;
+      padding:60px 20px;
+      background:#f4f4f4;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 4rem;
-      background: rgba(245,242,236,0.92);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(8px);
-      transition: padding 0.3s, box-shadow 0.3s;
-    }
-    nav.scrolled {
-      padding: 0.9rem 4rem;
-      box-shadow: 0 2px 20px rgba(15,14,13,0.06);
-    }
-    .nav-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem; font-weight: 600;
-      letter-spacing: 0.04em; color: var(--ink); text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--mid); text-decoration: none; transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1px; background: var(--accent); transform: scaleX(0);
-      transition: transform 0.25s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-links a.active { color: var(--accent); }
-    .nav-links a.active::after { transform: scaleX(1); }
-
-    /* ── MOBILE MENU ── */
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px; cursor: pointer;
-      background: none; border: none; padding: 4px;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 1.5px;
-      background: var(--ink); transition: transform 0.25s, opacity 0.25s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    .mobile-menu {
-      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--paper); z-index: 99; flex-direction: column;
-      justify-content: center; align-items: center; gap: 2.5rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600;
-      color: var(--ink); text-decoration: none; transition: color 0.2s;
-    }
-    .mobile-menu a:hover { color: var(--accent); }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; display: grid;
-      grid-template-columns: 1fr 1fr; padding-top: 80px;
-    }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 6rem 4rem; border-right: 1px solid var(--line); position: relative;
-    }
-    .hero-tag {
-      font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 1.6rem;
-      display: flex; align-items: center; gap: 0.7rem; font-weight: 500;
-    }
-    .hero-tag::before {
-      content: ''; display: block; width: 28px; height: 1px; background: var(--accent);
-    }
-    .hero-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.2rem, 6vw, 5.5rem); font-weight: 600;
-      line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 1.8rem;
-    }
-    .hero-name span { color: var(--accent2); }
-    .hero-desc {
-      font-size: 1rem; color: var(--mid); max-width: 420px;
-      line-height: 1.8; margin-bottom: 2.8rem;
-    }
-    .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 0.8rem;
-      background: var(--accent); color: #fff; padding: 0.9rem 2rem;
-      font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; transition: background 0.25s, transform 0.2s;
-    }
-    .hero-cta:hover { background: var(--ink); transform: translateY(-2px); }
-    .hero-cta.secondary {
-      background: transparent; color: var(--ink);
-      border: 1px solid var(--line);
-    }
-    .hero-cta.secondary:hover { background: var(--ink); color: var(--paper); }
-    .hero-cta svg { width: 14px; height: 14px; }
-
-    .hero-right {
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 4rem; background: var(--accent); position: relative; overflow: hidden;
-    }
-    .hero-right::before {
-      content: 'DO'; position: absolute; top: -0.1em; right: -0.05em;
-      font-family: 'Cormorant Garamond', serif; font-size: 22rem; font-weight: 700;
-      color: rgba(255,255,255,0.06); line-height: 1; pointer-events: none;
+    .hero-cta{
+      display:inline-block;
+      padding:12px 25px;
+      margin-top:20px;
+      background:#222;
+      color:#fff;
+      text-decoration:none;
+      border-radius:5px;
     }
 
-    /* ── PHOTO ── */
-    .hero-photo-wrap {
-      position: relative; z-index: 1; margin-bottom: 2rem; text-align: left;
-    }
-    .hero-photo {
-      width: 140px; height: 140px; object-fit: cover; object-position: top center;
-      border-radius: 50%; border: 3px solid rgba(255,255,255,0.25);
-      display: block;
-    }
-    .hero-photo-fallback {
-      width: 140px; height: 140px; border-radius: 50%;
-      background: rgba(255,255,255,0.1); border: 3px solid rgba(255,255,255,0.25);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600;
-      color: rgba(255,255,255,0.6);
+    .hero-cta.secondary{
+      background:#555;
     }
 
-    .hero-stats {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.5rem; position: relative; z-index: 1;
-    }
-    .stat { border: 1px solid rgba(255,255,255,0.2); padding: 1.6rem; }
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 600;
-      color: #fff; line-height: 1; margin-bottom: 0.4rem;
-    }
-    .stat-label {
-      font-size: 0.75rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(255,255,255,0.6);
-    }
-    .hero-tagline {
-      color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.75;
-      margin-bottom: 2.5rem; position: relative; z-index: 1;
-      padding: 1.5rem; border-left: 2px solid rgba(255,255,255,0.4); font-style: italic;
+    /* Sections */
+    section{
+      padding:50px 20px;
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 0.8s ease;
     }
 
-    /* ── SECTIONS ── */
-    section { padding: 7rem 4rem; }
-    .section-header {
-      display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 4rem;
-    }
-    .section-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 0.9rem;
-      color: var(--warm); font-weight: 500;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; line-height: 1.1;
-    }
-    .section-line { flex: 1; height: 1px; background: var(--line); margin-left: 1rem; }
-
-    /* ── ABOUT ── */
-    #about {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
-      background: var(--ink); color: var(--paper); padding: 7rem 4rem;
-    }
-    #about .section-title { color: var(--paper); }
-    #about .section-num { color: var(--warm); }
-    #about .section-line { background: rgba(245,242,236,0.15); }
-    .about-body p {
-      color: rgba(245,242,236,0.75); font-size: 1rem;
-      line-height: 1.9; margin-bottom: 1.4rem;
-    }
-    .about-body p strong { color: var(--paper); font-weight: 500; }
-    .about-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem; }
-    .pill {
-      font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-      border: 1px solid rgba(245,242,236,0.25); padding: 0.4rem 1rem;
-      color: rgba(245,242,236,0.7); cursor: default;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .pill:hover {
-      background: rgba(245,242,236,0.1); border-color: rgba(245,242,236,0.5);
-      color: var(--paper);
-    }
-    .about-right { display: flex; flex-direction: column; justify-content: center; }
-    .about-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 500;
-      color: var(--paper); line-height: 1.5; font-style: italic;
-      border-left: 3px solid var(--accent2); padding-left: 2rem; margin-bottom: 3rem;
-    }
-    .core-skills { list-style: none; }
-    .core-skills li {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 0.9rem 0; border-bottom: 1px solid rgba(245,242,236,0.1);
-      font-size: 0.9rem; color: rgba(245,242,236,0.75);
-    }
-    .core-skills li::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--warm); border-radius: 50%; flex-shrink: 0;
+    section.show{
+      opacity:1;
+      transform:translateY(0);
     }
 
-    /* ── EXPERIENCE ── */
-    #experience { background: var(--paper); }
-    .exp-grid { display: grid; gap: 2rem; }
-    .exp-card {
-      display: grid; grid-template-columns: 220px 1fr; gap: 3rem;
-      padding: 2.8rem 0; border-bottom: 1px solid var(--line);
-    }
-    .exp-meta { padding-top: 0.25rem; }
-    .exp-date {
-      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 0.5rem;
-    }
-    .exp-company {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
-      font-weight: 600; color: var(--ink); margin-bottom: 0.25rem;
-    }
-    .exp-company a {
-      color: inherit; text-decoration: none;
-      border-bottom: 1px solid transparent; transition: border-color 0.2s, color 0.2s;
-    }
-    .exp-company a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-    .exp-type { font-size: 0.75rem; color: var(--mid); letter-spacing: 0.06em; }
-    .exp-role {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.7rem;
-      font-weight: 600; margin-bottom: 0.8rem; line-height: 1.2;
-    }
-    .exp-summary {
-      font-size: 0.93rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.6rem;
-    }
-    .exp-highlights { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-    .exp-highlights li {
-      display: flex; align-items: flex-start; gap: 0.9rem;
-      font-size: 0.88rem; color: #3a3633; line-height: 1.7;
-    }
-    .exp-highlights li::before {
-      content: '→'; color: var(--accent); flex-shrink: 0; margin-top: 0.05rem;
-    }
-    .exp-win {
-      margin-top: 1.5rem; background: var(--accent); color: #fff;
-      padding: 1rem 1.4rem; font-size: 0.83rem;
-      display: inline-flex; align-items: center; gap: 0.7rem;
-    }
-    .exp-win strong { font-weight: 500; }
-
-    /* ── PROJECTS ── */
-    #projects { background: #1a1916; padding: 7rem 4rem; }
-    #projects .section-title { color: var(--paper); }
-    #projects .section-num { color: var(--warm); }
-    #projects .section-line { background: rgba(245,242,236,0.1); }
-    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .project-card {
-      border: 1px solid rgba(245,242,236,0.1); padding: 2.5rem;
-      transition: border-color 0.3s, transform 0.3s; cursor: default;
-    }
-    .project-card:hover { border-color: var(--warm); transform: translateY(-4px); }
-    .project-tag {
-      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--warm); margin-bottom: 1rem;
-    }
-    .project-title {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 600;
-      color: var(--paper); margin-bottom: 0.9rem; line-height: 1.15;
-    }
-    .project-title a {
-      color: inherit; text-decoration: none;
-      transition: color 0.2s;
-    }
-    .project-title a:hover { color: var(--warm); }
-    .project-desc {
-      font-size: 0.88rem; color: rgba(245,242,236,0.6);
-      line-height: 1.8; margin-bottom: 1.8rem;
-    }
-    .project-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .project-bullets li {
-      font-size: 0.83rem; color: rgba(245,242,236,0.5);
-      display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.65;
-    }
-    .project-bullets li::before {
-      content: '·'; color: var(--warm); font-size: 1.1rem;
-      flex-shrink: 0; line-height: 1.5;
-    }
-    .project-footer {
-      margin-top: 1.8rem; padding-top: 1.4rem;
-      border-top: 1px solid rgba(245,242,236,0.1);
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-    .project-link {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      margin-top: 1.2rem; font-size: 0.78rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--warm); text-decoration: none;
-      border-bottom: 1px solid rgba(200,180,154,0.3);
-      padding-bottom: 2px; transition: border-color 0.2s, color 0.2s;
-    }
-    .project-link:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
-    .tool-tag {
-      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.3rem 0.75rem; border-radius: 2px;
-    }
-    .tool-tag:nth-child(5n+1) { background: rgba(200,180,154,0.18); color: #c8b49a; border: 1px solid rgba(200,180,154,0.3); }
-    .tool-tag:nth-child(5n+2) { background: rgba(45,90,75,0.25);   color: #7bbfa8; border: 1px solid rgba(45,90,75,0.35); }
-    .tool-tag:nth-child(5n+3) { background: rgba(139,58,47,0.2);   color: #d4907f; border: 1px solid rgba(139,58,47,0.3); }
-    .tool-tag:nth-child(5n+4) { background: rgba(200,180,154,0.18); color: #c8b49a; border: 1px solid rgba(200,180,154,0.3); }
-    .tool-tag:nth-child(5n+5) { background: rgba(45,90,75,0.25);   color: #7bbfa8; border: 1px solid rgba(45,90,75,0.35); }
-
-    /* ── WORK SAMPLES ── */
-    #samples { background: var(--paper); }
-    .samples-placeholder {
-      border: 2px dashed var(--line); padding: 4rem 3rem; text-align: center;
-    }
-    .samples-placeholder .coming-soon {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
-      color: var(--warm); margin-bottom: 1rem; font-style: italic;
-    }
-    .samples-placeholder p {
-      color: var(--mid); font-size: 0.95rem; line-height: 1.8;
-      max-width: 520px; margin: 0 auto 1.5rem;
+    /* Experience */
+    .experience-item{
+      margin-bottom:15px;
+      transition:transform 0.3s ease;
     }
 
-    /* ── SKILLS ── */
-    #skills { background: var(--paper); }
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .skill-block {
-      padding: 2rem; border: 1px solid var(--line);
-      transition: border-color 0.25s, transform 0.25s;
-    }
-    .skill-block:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .skill-block-title {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600;
-      margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--accent);
-    }
-    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .skill-list li {
-      font-size: 0.85rem; color: var(--mid);
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .skill-list li::before {
-      content: ''; width: 4px; height: 4px; border-radius: 50%;
-      background: var(--warm); flex-shrink: 0;
+    .experience-item:hover{
+      transform:translateX(6px);
     }
 
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--accent2); color: var(--paper); text-align: center; padding: 6rem 4rem;
-    }
-    #contact .section-title { color: var(--paper); font-size: clamp(2.2rem, 4vw, 3.5rem); }
-    .contact-sub {
-      color: rgba(245,242,236,0.75); font-size: 1rem; max-width: 500px;
-      margin: 1.2rem auto 3rem; line-height: 1.8;
-    }
-    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-    .contact-link {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.9rem 2rem; border: 1px solid rgba(245,242,236,0.4);
-      color: var(--paper); text-decoration: none; font-size: 0.82rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      transition: background 0.25s, border-color 0.25s;
-    }
-    .contact-link:hover { background: rgba(245,242,236,0.15); border-color: rgba(245,242,236,0.7); }
-
-    /* ── SCROLL TO TOP ── */
-    .back-to-top {
-      position: fixed; bottom: 2rem; right: 2rem;
-      width: 44px; height: 44px; background: var(--accent);
-      color: #fff; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s;
-      z-index: 99;
-    }
-    .back-to-top.visible { opacity: 1; pointer-events: auto; }
-    .back-to-top:hover { transform: translateY(-3px); background: var(--ink); }
-
-    footer {
-      background: var(--ink); color: rgba(245,242,236,0.4); text-align: center;
-      padding: 2rem; font-size: 0.78rem; letter-spacing: 0.06em;
+    /* Projects */
+    .project-card{
+      border:1px solid #ddd;
+      padding:20px;
+      margin-bottom:20px;
+      border-radius:5px;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 1.2rem 1.5rem; }
-      nav.scrolled { padding: 0.8rem 1.5rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--line); }
-      .hero-right { padding: 3rem 1.5rem; min-height: 60vh; }
-      #about { grid-template-columns: 1fr; padding: 5rem 1.5rem; }
-      section { padding: 5rem 1.5rem; }
-      #projects { padding: 5rem 1.5rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .exp-card { grid-template-columns: 1fr; gap: 0.5rem; }
+    .project-card a{
+      margin-right:10px;
+      text-decoration:none;
+      color:#007BFF;
+    }
+
+    /* Work Samples */
+    .work-sample{
+      border:1px solid #ddd;
+      padding:20px;
+      margin-bottom:20px;
+      border-radius:5px;
+    }
+
+    .sample-link{
+      display:inline-block;
+      margin-top:10px;
+      color:#fff;
+      background:#007BFF;
+      padding:8px 15px;
+      text-decoration:none;
+      border-radius:5px;
+    }
+
+    /* Insights */
+    .insight-card{
+      border:1px solid #ddd;
+      padding:20px;
+      margin-bottom:20px;
+      border-radius:5px;
+    }
+
+    .insight-card a{
+      display:inline-block;
+      margin-top:10px;
+      color:#fff;
+      background:#28A745;
+      padding:8px 15px;
+      text-decoration:none;
+      border-radius:5px;
     }
   </style>
 </head>
 <body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Damilola Oyekanmi</h1>
+    <p>Product & Operations Manager | Open to Roles</p>
+    <a href="resume/Damilola_Oyekanmi_Resume.pdf" class="hero-cta secondary" download>Download Resume</a>
+  </section>
 
-<!-- Mobile full-screen menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#experience" onclick="closeMobile()">Experience</a>
-  <a href="#projects" onclick="closeMobile()">Projects</a>
-  <a href="#samples" onclick="closeMobile()">Work Samples</a>
-  <a href="#skills" onclick="closeMobile()">Skills</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
-</div>
+  <!-- Experience Section -->
+  <section class="experience">
+    <h2>Experience</h2>
+    <div class="experience-item">Project & Operations Management at Soso Studio</div>
+    <div class="experience-item">Cross-functional Project Delivery at IrokoEV</div>
+  </section>
 
-<nav id="mainNav">
-  <a class="nav-name" href="#">Damilola Oyekanmi</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#samples">Work Samples</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<section class="hero" id="home">
-  <div class="hero-left">
-    <div class="hero-tag">Operations &amp; IT Project Manager</div>
-    <h1 class="hero-name">Damilola<br/><span>Oyekanmi</span></h1>
-    <p class="hero-desc">
-      I build systems, lead teams, and manage end-to-end delivery — from operational foundations to live technology products. My work sits at the intersection of people, process, and delivery.
-    </p>
-    <div class="hero-cta-group">
-      <a href="#contact" class="hero-cta">
-        Let's work together
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#experience" class="hero-cta secondary">View my work</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-photo-wrap">
-      <img
-        src="myphoto.jpg"
-        alt="Damilola Oyekanmi"
-        class="hero-photo"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-      />
-      <div class="hero-photo-fallback" style="display:none;">DO</div>
-    </div>
-    <p class="hero-tagline">
-      "When you hire me as your project manager, you're not just getting someone to tick off checklists. You're gaining a system that keeps your team aligned and frees you from operational overwhelm."
-    </p>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num" data-target="2" data-suffix="+">0+</div>
-        <div class="stat-label">Years in Operations &amp; Project Management</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" data-target="20" data-suffix="+">0+</div>
-        <div class="stat-label">Cross-functional team members led</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" data-target="30" data-suffix="%">0%</div>
-        <div class="stat-label">Reduction in project delays</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">Multiple</div>
-        <div class="stat-label">Live projects managed end-to-end</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div>
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2 class="section-title">Who I am</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="about-body">
-      <p>
-        I'm an <strong>Operations and IT Project Manager</strong> who has spent the last few years building systems and delivering outcomes that actually work, not just on paper, but in the day-to-day reality of fast-moving teams.
-      </p>
-      <p>
-        My career has moved from establishing operational foundations from scratch to formally training in IT Project Management, where I stepped into a live product environment and led delivery from the ground up. <strong>Operations taught me what good execution looks like from the inside.</strong> Project Management gave me the framework to lead it at scale.
-      </p>
-      <p>
-        I work closely with decision-makers, build systems that reduce friction, and keep delivery momentum even when things get complicated. I bring discipline, strong judgment, and a people-first approach to every layer of the work.
-      </p>
-      <div class="about-pills">
-        <span class="pill">Stakeholder Management</span>
-        <span class="pill">Agile &amp; Waterfall</span>
-        <span class="pill">Cross-functional Delivery</span>
-        <span class="pill">Risk Management</span>
-        <span class="pill">SOP Development</span>
-        <span class="pill">Client Relations</span>
-      </div>
-    </div>
-  </div>
-  <div class="about-right">
-    <p class="about-quote">
-      "Every team reaches a point where the work is bigger than the informal systems holding it together. A project manager is how you close that gap."
-    </p>
-    <ul class="core-skills">
-      <li>Stakeholder &amp; Client Communication</li>
-      <li>Project Execution &amp; Delivery</li>
-      <li>Operational Problem Solving</li>
-      <li>Cross-functional Team Coordination</li>
-      <li>Risk Identification &amp; Resolution</li>
-      <li>SOP Creation &amp; Process Design</li>
-      <li>Notion · Trello · Jira · Google Workspace</li>
-    </ul>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Experience</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="exp-grid">
-
-    <div class="exp-card">
-      <div class="exp-meta">
-        <div class="exp-date">Nov 2025 — Mar 2026</div>
-        <div class="exp-company">
-          <!-- Stanix hyperlinked to IrokoEV -->
-          <a href="https://irokoev.vercel.app/" target="_blank" rel="noopener">Stanix Consulting</a>
-        </div>
-        <div class="exp-type">IT Project Management</div>
-      </div>
-      <div class="exp-content">
-        <h3 class="exp-role">IT Project Manager</h3>
-        <p class="exp-summary">
-          Lead project manager on IrokoEV, a live electric vehicle platform currently in active development. Served as the primary coordination and communication hub for a 20-member cross-functional team across engineering, design, QA, and product management.
-        </p>
-        <ul class="exp-highlights">
-          <li>Served as Class Governor for a cohort of 15 Project Managers, acting as the primary communication bridge between the Project Management team and program leadership across time zones.</li>
-          <li>Managed dependencies, resolved blockers, and maintained stakeholder visibility across a hybrid Waterfall and Agile environment throughout the full product development lifecycle.</li>
-          <li>Coordinated sprint deliverables and end-to-end communication across a 20-member team toward a live product launch.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-card">
-      <div class="exp-meta">
-        <div class="exp-date">Aug 2024 — Present</div>
-        <div class="exp-company">Sozo Studio</div>
-        <div class="exp-type">Operations &amp; Project Management</div>
-      </div>
-      <div class="exp-content">
-        <h3 class="exp-role">Programs &amp; Project Lead</h3>
-        <p class="exp-summary">
-          Operational and project lead managing end-to-end delivery of marketing projects for multiple clients. Built the operational foundation of the studio from the ground up, including onboarding processes, SOPs, and delivery frameworks.
-        </p>
-        <ul class="exp-highlights">
-          <li>Established the client and staff onboarding process from inception, defining workflows and setting the operational standards the team currently runs on.</li>
-          <li>Served as primary point of contact for clients throughout project delivery, managing expectations and resolving escalations promptly.</li>
-          <li>Continuously developed and updated SOPs to standardise recurring processes and maintain consistent execution frameworks as operations evolved.</li>
-          <li>Coordinated cross-functional teams, assigned responsibilities, monitored timelines, and proactively resolved blockers to sustain delivery momentum.</li>
-        </ul>
-        <div class="exp-win">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          <strong>Impact:</strong>&nbsp;Reduced project delays by approximately 30% through proactive stakeholder communication and consistent follow-through.
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="projects">
-  <div class="section-header">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Key Projects</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="projects-grid">
-
+  <!-- Projects Section -->
+  <section class="projects">
+    <h2>Projects & Case Studies</h2>
+    
     <div class="project-card">
-      <div class="project-tag">IT Project Management · Live Product</div>
-      <!-- IrokoEV title hyperlinked -->
-      <h3 class="project-title">
-        <a href="https://irokoev.vercel.app/" target="_blank" rel="noopener">IrokoEV Platform ↗</a>
-      </h3>
-      <p class="project-desc">
-        An active electric vehicle platform currently in development. I served as lead Project Manager and primary communication coordinator across the entire cross-functional team from design through to launch-readiness.
-      </p>
-      <ul class="project-bullets">
-        <li>Managed a 20-member team across engineering, design, QA, and product in a hybrid Agile/Waterfall environment.</li>
-        <li>Maintained stakeholder visibility across all workstreams and kept delivery momentum through dependency mapping and proactive blocker resolution.</li>
-        <li>Coordinated sprint planning, deliverable tracking, and cross-timezone communication for a diverse distributed team.</li>
-      </ul>
-      <div class="project-footer">
-        <span class="tool-tag">Jira</span>
-        <span class="tool-tag">Agile</span>
-        <span class="tool-tag">Waterfall</span>
-        <span class="tool-tag">Stakeholder Comms</span>
-        <span class="tool-tag">Sprint Management</span>
-      </div>
+      <h3>IrokoEV</h3>
+      <p>Cross-functional project for electric vehicle platform development.</p>
+      <a href="projects/irokoev-case-study.html">View Case Study</a>
+      <a href="https://irokoev.com" target="_blank">Visit Platform</a>
     </div>
 
     <div class="project-card">
-      <div class="project-tag">Operations · System Design</div>
-      <h3 class="project-title">Sozo Studio Operations Build</h3>
-      <p class="project-desc">
-        Built the operational infrastructure of a growing studio from scratch, covering client onboarding, staff onboarding, delivery workflows, and SOP documentation. This was not inherited — it was created.
-      </p>
-      <ul class="project-bullets">
-        <li>Designed and implemented the end-to-end onboarding experience for both clients and staff, creating repeatable frameworks that reduced ramp-up time.</li>
-        <li>Created a living SOP library that standardised recurring processes across the team and maintained consistency as the studio scaled.</li>
-        <li>Achieved a 30% reduction in project delays by strengthening communication protocols and delivery accountability.</li>
-      </ul>
-      <div class="project-footer">
-        <span class="tool-tag">Notion</span>
-        <span class="tool-tag">Trello</span>
-        <span class="tool-tag">Google Workspace</span>
-        <span class="tool-tag">SOP Design</span>
-        <span class="tool-tag">Process Mapping</span>
-      </div>
+      <h3>Sozo Studio</h3>
+      <p>Operational coordination and website delivery.</p>
+      <a href="projects/sozo-operations-case-study.html">View Case Study</a>
+      <a href="https://sozostudio.com" target="_blank">Visit Studio Website</a>
+    </div>
+  </section>
+
+  <!-- Work Samples Section -->
+  <section class="work-samples">
+    <h2>Work Samples</h2>
+    
+    <div class="work-sample">
+      <h3>Sprint Planning Template</h3>
+      <p>Structured template to organize sprint planning sessions and assign delivery ownership.</p>
+      <a href="work-samples/sprint-planning-template.pdf" class="sample-link" download>Download Sample</a>
     </div>
 
-  </div>
-</section>
-
-<section id="samples">
-  <div class="section-header">
-    <span class="section-num">04</span>
-    <h2 class="section-title">Work Samples</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="samples-placeholder">
-    <p class="coming-soon">Coming soon</p>
-    <p>
-      This section will showcase real deliverables from my work — things like SOP documents, project trackers, communication frameworks, and process maps. Check back soon.
-    </p>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="section-header">
-    <span class="section-num">05</span>
-    <h2 class="section-title">Skills &amp; Tools</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-block">
-      <h4 class="skill-block-title">Project Management</h4>
-      <ul class="skill-list">
-        <li>Agile &amp; Scrum Methodology</li>
-        <li>Waterfall Project Delivery</li>
-        <li>Sprint Planning &amp; Tracking</li>
-        <li>Risk Identification &amp; Mitigation</li>
-        <li>Dependency Management</li>
-        <li>Product Lifecycle Management</li>
-      </ul>
+    <div class="work-sample">
+      <h3>Project Status Update Template</h3>
+      <p>Track progress, blockers, and next steps efficiently across stakeholders.</p>
+      <a href="work-samples/project-status-update-template.pdf" class="sample-link" download>Download Sample</a>
     </div>
-    <div class="skill-block">
-      <h4 class="skill-block-title">Operations</h4>
-      <ul class="skill-list">
-        <li>SOP Development &amp; Documentation</li>
-        <li>Process Design &amp; Optimisation</li>
-        <li>Workflow Mapping</li>
-        <li>Team Onboarding Systems</li>
-        <li>Cross-functional Coordination</li>
-        <li>Operational Problem Solving</li>
-      </ul>
+
+    <div class="work-sample">
+      <h3>Onboarding Process Map</h3>
+      <p>Step-by-step onboarding process for new team members.</p>
+      <a href="work-samples/onboarding-process-map.pdf" class="sample-link" download>Download Sample</a>
     </div>
-    <div class="skill-block">
-      <h4 class="skill-block-title">Communication &amp; Tools</h4>
-      <ul class="skill-list">
-        <li>Stakeholder &amp; Client Management</li>
-        <li>Executive-level Communication</li>
-        <li>Escalation Handling</li>
-        <li>Jira · Notion · Trello</li>
-        <li>Google Workspace</li>
-        <li>Cross-timezone Collaboration</li>
-      </ul>
+  </section>
+
+  <!-- Insights / Blog Section -->
+  <section class="insights">
+    <h2>Insights & Thought Leadership</h2>
+    <div class="insight-card">
+      <h3>Lessons From Coordinating a 20-Person Product Team</h3>
+      <p>What I learned managing dependencies and stakeholder expectations across engineering, product, and design.</p>
+      <a href="https://your-substack-link.com" target="_blank">Read Article</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <h2 class="section-title">Let's connect</h2>
-  <p class="contact-sub">
-    Open to IT Project Management Associate and Junior roles, and Operations Management opportunities. If you're building something that needs operational rigour and delivery focus, let's talk.
-  </p>
-  <div class="contact-links">
-    <a href="mailto:kanmidamilola@gmail.com" class="contact-link">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-      Email me
-    </a>
-    <a href="https://www.linkedin.com/in/damilolaoyekanmi" class="contact-link" target="_blank" rel="noopener">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
-    </a>
-  </div>
-</section>
+  <script>
+    // Scroll animations
+    const sections = document.querySelectorAll("section");
 
-<footer>
-  &copy; 2026 Damilola Oyekanmi &middot; Operations &amp; IT Project Manager
-</footer>
-
-<!-- Scroll to top button -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
-</button>
-
-<script>
-  /* ── Nav shrink on scroll ── */
-  const nav = document.getElementById('mainNav');
-  const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      nav.classList.add('scrolled');
-      backToTop.classList.add('visible');
-    } else {
-      nav.classList.remove('scrolled');
-      backToTop.classList.remove('visible');
-    }
-  });
-
-  /* ── Active nav link on scroll ── */
-  const sections = document.querySelectorAll('section[id]');
-  const navAnchors = document.querySelectorAll('.nav-links a');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navAnchors.forEach(a => a.classList.remove('active'));
-        const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if (link) link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  sections.forEach(s => observer.observe(s));
-
-  /* ── Mobile menu ── */
-  function toggleMobile() {
-    const menu = document.getElementById('mobileMenu');
-    const btn = document.getElementById('hamburger');
-    menu.classList.toggle('open');
-    btn.classList.toggle('open');
-  }
-  function closeMobile() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  }
-
-  /* ── Counter animation ── */
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
-    const suffix = el.dataset.suffix || '';
-    const duration = 1400;
-    const steps = 50;
-    const interval = duration / steps;
-    let current = 0;
-    const timer = setInterval(() => {
-      current += Math.ceil(target / steps);
-      if (current >= target) { current = target; clearInterval(timer); }
-      el.textContent = current + suffix;
-    }, interval);
-  }
-  const counters = document.querySelectorAll('.stat-num[data-target]');
-  if ('IntersectionObserver' in window) {
-    const cObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) { animateCounter(entry.target); cObserver.unobserve(entry.target); }
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
       });
-    }, { threshold: 0.5 });
-    counters.forEach(c => cObserver.observe(c));
-  } else {
-    counters.forEach(el => { el.textContent = el.dataset.target + (el.dataset.suffix || ''); });
-  }
-</script>
+    });
 
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
