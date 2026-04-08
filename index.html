@@ -1,124 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Damilola Oyekanmi - Operations & IT Project Manager</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Damilola Oyekanmi — Operations & Project Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; color: #222; }
-    h1, h2, h3 { color: #111; }
-    a { color: #0066cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .stats { display: flex; gap: 20px; margin: 20px 0; }
-    .stat { font-weight: bold; font-size: 1.2em; }
-    .section { margin-bottom: 40px; }
-    .work-sample { margin-bottom: 20px; }
-    button { background-color: #0066cc; color: white; border: none; padding: 12px 20px; font-size: 1em; cursor: pointer; }
-    button:hover { background-color: #0052a3; }
+    :root {
+      --ink:       #0a1e3d;
+      --paper:     #e6f0ff;
+      --warm:      #1d4ed8;
+      --accent:    #3b82f6;
+      --accent2:   #1e40af;
+      --mid:       #334155;
+      --line:      rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .nav-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center; padding: 6rem 4rem 6rem 4rem;
+      border-right: 1px solid var(--line); position: relative;
+    }
+    .hero-tag { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.6rem; }
+    .hero-name { font-size: 36px; font-weight: 600; line-height: 1.05; margin-bottom: 1.8rem; }
+    .hero-name span { color: var(--accent2); }
+    .hero-desc { font-size: 18px; color: var(--mid); max-width: 420px; line-height: 1.8; margin-bottom: 2.8rem; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      background: var(--accent); color: #fff; padding: 0.9rem 2rem; font-size: 0.82rem;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.25s, transform 0.2s;
+      width: fit-content;
+    }
+    .hero-cta:hover { background: var(--accent2); transform: translateY(-2px); }
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    .hero-right { display: flex; flex-direction: column; justify-content: flex-end; padding: 4rem; position: relative; overflow: hidden; }
+    .hero-right img {
+      width: 160px; height: 160px; object-fit: cover; border-radius: 50%;
+      margin-bottom: 2rem; border: 3px solid rgba(0,0,0,0.1);
+    }
+    .hero-tagline { color: var(--ink); font-size: 18px; line-height: 1.75; margin-bottom: 2.5rem; }
+
+    section { padding: 7rem 4rem; }
+    .section-header { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 4rem; }
+    .section-num { font-family: 'Poppins', sans-serif; font-size: 0.9rem; color: var(--warm); font-weight: 500; }
+    .section-title { font-family: 'Poppins', sans-serif; font-size: 36px; font-weight: 600; line-height: 1.1; }
+    .section-line { flex: 1; height: 1px; background: var(--line); margin-left: 1rem; }
+
+    /* ABOUT */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .about-body p { margin-bottom: 1.4rem; }
+    .about-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem; }
+    .pill { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(0,0,0,0.2); padding: 0.4rem 1rem; color: var(--mid); }
+
+    /* EXPERIENCE */
+    #experience { background: var(--paper); }
+    .exp-card { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; padding: 2.8rem 0; border-bottom: 1px solid var(--line); }
+    .exp-date { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .exp-company { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
+    .exp-type { font-size: 0.75rem; color: var(--mid); letter-spacing: 0.06em; }
+
+    .exp-role { font-family: 'Poppins', sans-serif; font-size: 1.7rem; font-weight: 600; margin-bottom: 0.8rem; line-height: 1.2; }
+    .exp-summary { font-size: 0.93rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.6rem; }
+    .exp-highlights li::before { content: '→'; color: var(--accent); margin-right: 0.7rem; }
+
+    /* PROJECTS */
+    #projects { background: #e6f0ff; padding: 7rem 4rem; }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .project-card { border: 1px solid rgba(0,0,0,0.1); padding: 2.5rem; transition: border-color 0.3s, transform 0.3s; }
+    .project-card:hover { border-color: var(--warm); transform: translateY(-4px); }
+    .project-title a { color: inherit; text-decoration: none; }
+
+    /* SKILLS */
+    #skills { background: var(--paper); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+    /* CONTACT */
+    #contact { background: var(--accent2); color: var(--paper); text-align: center; padding: 6rem 4rem; }
+    .contact-link { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; border: 1px solid rgba(255,255,255,0.4); color: var(--paper); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.25s, border-color 0.25s; }
+    .contact-link:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.7); }
+
+    footer { background: var(--ink); color: rgba(255,255,255,0.4); text-align: center; padding: 2rem; font-size: 0.78rem; letter-spacing: 0.06em; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--line); }
+      .hero-right { padding: 3rem 1.5rem; min-height: 60vh; }
+      #about { grid-template-columns: 1fr; padding: 5rem 1.5rem; }
+      section { padding: 5rem 1.5rem; }
+      #projects { padding: 5rem 1.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .exp-card { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Headline -->
-  <h1>Operations & IT Project Manager</h1>
-  <p>I build systems, lead teams, and manage end-to-end delivery from operational foundations to live technology projects. My work sits at the intersection of people, process, and delivery.</p>
-  
-  <!-- Work Together Button -->
-  <button onclick="location.href='#connect'">Let's work together</button>
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#">Damilola Oyekanmi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- Stats -->
-  <div class="stats">
-    <div class="stat">2+ years in operations & project management</div>
-    <div class="stat">20+ cross-functional team members led</div>
-    <div class="stat">30% reduction in project delays</div>
-    <div class="stat">Multiple live projects managed end-to-end</div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Operations & Project Management</div>
+    <h1 class="hero-name">Damilola<br/><span>Oyekanmi</span></h1>
+    <p class="hero-desc">
+      I build systems, lead teams, and manage end to end delivery from operational foundations to live technology products. My work sits at the intersection of people, process, and execution.
+    </p>
+    <a href="#contact" class="hero-cta">
+      Let's work together
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
   </div>
-
-  <!-- About Section -->
-  <div class="section">
-    <h2>About</h2>
-    <p>I'm an Operations and IT Project Manager who has spent the last few years building things that actually work — not just on paper, but in the day-to-day reality of fast-moving teams and real clients.</p>
-    <p>My career has moved from establishing operational foundations from scratch to formally training in IT Project Management and stepping into a live project environment. Operations taught me what good execution looks like from the inside, and project management training gave me the framework to lead it at scale.</p>
-    <p>I operate closely with decision-makers, build systems that reduce friction, and keep delivery momentum even when things get complicated. I bring discipline, strong judgment, and a people-first approach to every layer of the work.</p>
-
-    <h3>Core Skills & Strengths</h3>
-    <ul>
-      <li>Stakeholder management</li>
-      <li>Agile & Waterfall methodologies</li>
-      <li>Cross-functional delivery</li>
-      <li>Risk management</li>
-      <li>SOP development</li>
-      <li>Client relations</li>
-    </ul>
-    <p><em>"I don't just manage projects. I design the systems and processes underneath them so they run efficiently and sustainably long after the project is complete."</em></p>
-
-    <h3>Tools</h3>
-    <p>Notion · Trello · Jira · Google Workspace</p>
-  </div>
-
-  <!-- Experience Section -->
-  <div class="section">
-    <h2>Experience</h2>
-
-    <h3>Nov 2025 — Mar 2026 | Stanix Consulting | IT Project Manager</h3>
-    <p>Lead project manager on <a href="https://www.irokoev.com" target="_blank">IrokoEV</a>, a live electric vehicle platform currently in active development. Served as the primary coordination and communication hub for a 20-member cross-functional team across engineering, design, QA, and product management.</p>
-    <ul>
-      <li>Served as Class Governor for a cohort of 15 project managers, acting as the communication bridge between the project manager team and program leadership across time zones.</li>
-      <li>Managed dependencies, resolved blockers, and maintained stakeholder visibility across a hybrid Waterfall and Agile environment throughout the full project lifecycle.</li>
-      <li>Coordinated sprint deliverables and end-to-end communication across a 20-member team toward a live project launch.</li>
-    </ul>
-
-    <h3>Jun 2024 — Present | Sozo Studio | Programs & Project Lead</h3>
-    <p>Operational and project lead managing end-to-end delivery of marketing projects for multiple clients. Built the operational foundation of the studio from the ground up including onboarding processes, SOPs, and delivery frameworks.</p>
-    <ul>
-      <li>Established client and staff onboarding processes from inception, defining workflows and setting operational standards.</li>
-      <li>Served as the primary point of contact for clients throughout project delivery, managing expectations and resolving escalations promptly.</li>
-      <li>Continuously developed and updated SOPs to standardize recurring processes and maintain consistent execution frameworks.</li>
-      <li>Coordinated cross-functional teams, assigned responsibilities, monitored timelines, and proactively resolved blockers to sustain delivery momentum.</li>
-    </ul>
-    <p><strong>Impact:</strong> Reduced project delays by approximately 30% through proactive stakeholder communication and consistent follow-through.</p>
-  </div>
-
-  <!-- Work Samples Section -->
-  <div class="section">
-    <h2>Work Samples</h2>
-
-    <div class="work-sample">
-      <h3>IrokoEV Platform</h3>
-      <p>Lead project manager and primary communication coordinator across a 20-member cross-functional team from design through to launch-readiness.</p>
-      <ul>
-        <li>Managed a 20-member team across engineering, design, QA, and product in a hybrid Agile/Waterfall environment.</li>
-        <li>Maintained stakeholder visibility across all workstreams and kept delivery momentum through dependency mapping and proactive blocker resolution.</li>
-        <li>Coordinated sprint planning, deliverable tracking, and cross-timezone communication for a distributed team.</li>
-      </ul>
-      <p>🔗 <a href="https://www.irokoev.com" target="_blank">Visit IrokoEV</a></p>
-    </div>
-
-    <div class="work-sample">
-      <h3>Sozo Studio — Operations Build</h3>
-      <p>Built the operational infrastructure of a growing studio from scratch covering client onboarding, staff onboarding, delivery workflows, and SOP documentation.</p>
-      <ul>
-        <li>Designed and implemented the end-to-end onboarding experience for both clients and staff, creating repeatable frameworks that reduced ramp-up time.</li>
-        <li>Created a living SOP library that standardized recurring processes across the team and maintained consistency as the studio scaled.</li>
-        <li>Achieved a ~30% reduction in project delays by strengthening communication protocols and delivery accountability.</li>
-      </ul>
-    </div>
-
-    <div class="work-sample">
-      <h3>Future Work Samples</h3>
-      <p>Placeholder for future work samples such as SOPs, risk registers, or DSU documents. Links can be added later.</p>
+  <div class="hero-right">
+    <img src="myphoto.jpg" alt="Damilola Oyekanmi">
+    <p class="hero-tagline">
+      "When you hire me as your project manager, you're not just getting someone to track tasks or tick off checklists. You're gaining a system that protects revenue, ensures strategy execution, keeps your team aligned, and frees you from operational overwhelm."
+    </p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Years in Operations & Project Management</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Cross-functional team members led</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Efficiency improvement</div></div>
+      <div class="stat"><div class="stat-num">Multiple live projects managed end-to-end</div></div>
     </div>
   </div>
+</section>
 
-  <!-- Connect Section -->
-  <div class="section" id="connect">
-    <h2>Let's Connect</h2>
-    <p>Open to IT Project Manager Associate/Junior roles and Operations Management opportunities.</p>
-    <ul>
-      <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/your-linkedin-here" target="_blank">your LinkedIn</a></li>
-    </ul>
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">Let's connect</h2>
+  <div class="contact-links">
+    <a href="mailto:kanmidamilola@gmail.com?subject=Portfolio%20Inquiry" class="contact-link">
+      Email me
+    </a>
+    <a href="https://www.linkedin.com/in/damilolaoyekanmi" class="contact-link" target="_blank" rel="noopener noreferrer">
+      LinkedIn
+    </a>
   </div>
+</section>
+
+<footer>
+  © 2026 Damilola Oyekanmi · Operations & Project Management
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = [
+    { selector: '.hero-stats .stat-num:nth-child(1)', end: 2 },
+    { selector: '.hero-stats .stat-num:nth-child(2)', end: 20 },
+    { selector: '.hero-stats .stat-num:nth-child(3)', end: 30 },
+  ];
+  counters.forEach(counter => {
+    const el = document.querySelector(counter.selector);
+    if (!el) return;
+    let start = 0;
+    const duration = 2000;
+    const stepTime = Math.ceil(duration / counter.end);
+    const timer = setInterval(() => {
+      start++;
+      el.textContent = start + (counter.selector.includes('3') ? '%' : '+');
+      if (start >= counter.end) clearInterval(timer);
+    }, stepTime);
+  });
+});
+</script>
 
 </body>
 </html>
